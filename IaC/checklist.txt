@@ -1,6 +1,6 @@
 • Resource Group - done
 • Storage Account - done
 • Blob Storage - done
-• CDN
-• Database
+• CDN - done
+• Database - done
 • Function

@@ -10,15 +10,9 @@ resource "azurerm_storage_account" "example" {
   account_replication_type = "LRS"
 
   static_website {
-    index_document = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend\\index.html"
+    index_document = "index.html"
   }
 }
-
-# resource "azurerm_storage_container" "example" {
-#   name                  = "$web"
-#   storage_account_name  = azurerm_storage_account.example.name
-#   container_access_type = "blob"
-# }
 
 resource "azurerm_storage_blob" "html" {
   name                   = "index.html"
@@ -26,6 +20,7 @@ resource "azurerm_storage_blob" "html" {
   storage_container_name = local.storage_container_name
   type                   = "Block"
   source                 = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend\\index.html"
+  content_type           = "text/html"
 }
 
 resource "azurerm_storage_blob" "js" {
@@ -34,6 +29,7 @@ resource "azurerm_storage_blob" "js" {
   storage_container_name = local.storage_container_name
   type                   = "Block"
   source                 = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend\\index.js"
+  content_type           = "text/javascript"
 }
 
 resource "azurerm_storage_blob" "css" {
@@ -42,5 +38,6 @@ resource "azurerm_storage_blob" "css" {
   storage_container_name = local.storage_container_name
   type                   = "Block"
   source                 = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend\\styles.css"
+  content_type           = "text/css"
 }
 

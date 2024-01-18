@@ -140,4 +140,6 @@ __queuestorage__
 __azurite_db*__.json
 .python_packages
 
-IaC\.terraform
+IaC/.terraform
+IaC/terraform.tfstate
+IaC/terraform.tfstate.backup
