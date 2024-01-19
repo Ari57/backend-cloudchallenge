@@ -26,12 +26,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-.venv
-
-config.py
-
-node_modules
-Old
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -139,8 +133,3 @@ __blobstorage__
 __queuestorage__
 __azurite_db*__.json
 .python_packages
-
-IaC/.terraform
-IaC/terraform.tfstate
-IaC/terraform.tfstate.backup
-.vscode/

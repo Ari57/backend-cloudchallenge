@@ -3,4 +3,4 @@
 • Blob Storage - done
 • CDN - done
 • Database - done
-• Function
+• Function - done
