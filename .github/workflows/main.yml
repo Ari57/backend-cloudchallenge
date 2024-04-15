@@ -21,7 +21,7 @@ jobs:
           cd IAC_CounterFunction
           ls
           python -m pip install --upgrade pip  
-          pip install -r IAC_CounterFunction\\requirements.txt
+          pip install -r requirements.txt
       - name: Python tests
         run: |
           python IAC_CounterFunction\\tests\\test-function_app.py
