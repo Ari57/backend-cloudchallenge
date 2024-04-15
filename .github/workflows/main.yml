@@ -18,10 +18,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd IAC_CounterFunction
-          ls
           python -m pip install --upgrade pip  
+          cd IAC_CounterFunction
           pip install -r requirements.txt
       - name: Python tests
         run: |
+          pwd
+          ls
           python IAC_CounterFunction\\tests\\test-function_app.py
