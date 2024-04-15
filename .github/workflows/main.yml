@@ -25,4 +25,4 @@ jobs:
         run: |
           pwd
           ls
-          python IAC_CounterFunction\\tests\\test-function_app.py
+          python IAC_CounterFunction/tests/test-function_app.py
