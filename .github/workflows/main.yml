@@ -19,8 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           ls
-          cd ..
-          pwd
+          cd IAC_CounterFunction
           ls
           python -m pip install --upgrade pip  
           pip install -r IAC_CounterFunction\\requirements.txt
