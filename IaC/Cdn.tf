@@ -14,8 +14,10 @@ resource "azurerm_cdn_endpoint" "example" {
   origin {
     name      = "iac-njdscv"
     host_name = "iacstoragecloudchallenge.z33.web.core.windows.net"
+
   }
-  optimization_type = "GeneralWebDelivery"
+  origin_host_header = "iacstoragecloudchallenge.z33.web.core.windows.net"
+  optimization_type  = "GeneralWebDelivery"
 }
 
 resource "azurerm_cdn_endpoint_custom_domain" "example" {

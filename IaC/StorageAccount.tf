@@ -19,7 +19,7 @@ resource "azurerm_storage_blob" "html" {
   storage_account_name   = azurerm_storage_account.example.name
   storage_container_name = local.storage_container_name
   type                   = "Block"
-  source                 = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend\\index.html"
+  source                 = "C:\\Users\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend-cloudchallenge\\index.html"
   content_type           = "text/html"
 }
 
@@ -28,7 +28,7 @@ resource "azurerm_storage_blob" "js" {
   storage_account_name   = azurerm_storage_account.example.name
   storage_container_name = local.storage_container_name
   type                   = "Block"
-  source                 = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend\\index.js"
+  source                 = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend-cloudchallenge\\index.js"
   content_type           = "text/javascript"
 }
 
@@ -37,7 +37,7 @@ resource "azurerm_storage_blob" "css" {
   storage_account_name   = azurerm_storage_account.example.name
   storage_container_name = local.storage_container_name
   type                   = "Block"
-  source                 = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend\\styles.css"
+  source                 = "C:\\Users\\njds1\\OneDrive\\Documents\\DevOps\\CloudResumeChallenge\\frontend-cloudchallenge\\styles.css"
   content_type           = "text/css"
 }
 

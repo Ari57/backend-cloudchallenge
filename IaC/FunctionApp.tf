@@ -15,11 +15,16 @@ resource "azurerm_linux_function_app" "example" {
   storage_account_access_key = azurerm_storage_account.example.primary_access_key
   service_plan_id            = azurerm_service_plan.example.id
 
-
   site_config {
+    cors {
+      allowed_origins = [
+        "https://www.iac-njdscv.com"
+      ]
+      support_credentials = true
+    }
+
     application_stack {
       python_version = "3.11"
     }
   }
-
 }

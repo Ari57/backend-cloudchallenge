@@ -144,3 +144,4 @@ IaC/.terraform
 IaC/terraform.tfstate
 IaC/terraform.tfstate.backup
 .vscode/
+frontend-cloudchallenge/
