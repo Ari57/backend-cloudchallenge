@@ -18,6 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pwd
           python -m pip install --upgrade pip  
           pip install -r IAC_CounterFunction\\requirements.txt
       - name: Python tests
