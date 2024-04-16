@@ -1,12 +1,15 @@
 import azure.functions as func
-from config import GetDatabase
+import pymongo
+import os
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 @app.route(route="http_trigger")
 def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
 
-    client = GetDatabase()
+    CONNECTION_STRING = os.environ.get("MONGODB_URI")
+    client = pymongo.MongoClient(CONNECTION_STRING)
+
     database = client["iac-db"]
     counter = database["website-counter"]
 

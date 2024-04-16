@@ -1,12 +1,10 @@
 import unittest
-import sys
 import os
 import requests
+import pymongo
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../IAC_CounterFunction")
-from config import GetDatabase
-
-client = GetDatabase()
+CONNECTION_STRING = os.environ.get("MONGODB_URI")
+client = pymongo.MongoClient(CONNECTION_STRING)
 
 database = client["iac-db"]
 counter = database["website-counter"]
