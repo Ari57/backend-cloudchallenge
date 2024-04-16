@@ -24,7 +24,9 @@ jobs:
           pip install -r IAC_CounterFunction/requirements.txt
 
       - name: Set up environment variables
-        uses: ""
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
