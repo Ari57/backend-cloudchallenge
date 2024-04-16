@@ -2,36 +2,44 @@ on:
   push:
   workflow_dispatch: # manual triggering
 
-jobs:  
-  build:  
-    runs-on: ubuntu-latest  
-    strategy:  
-      matrix:  
-        python-version: ["3.11"]  
+env:
+  AZURE_FUNCTIONAPP_NAME: 'IAC-CounterTrigger'   # set this to your function app name on Azure
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'IAC_CounterFunction'       # set this to the path to your function app project, defaults to the repository root
+  PYTHON_VERSION: '3.11'                     # set this to the python version to use (e.g. '3.6', '3.7', '3.8')
+  MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
-    steps:  
-      - name: Checkout code
-        uses: actions/checkout@v3
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@v3
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v4
-        with:  
-          python-version: ${{ matrix.python-version }} 
+    - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip  
-          pip install -r IAC_CounterFunction/requirements.txt
+    - name: 'Install dependencies'
+      shell: bash
+      run: |
+        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        python -m pip install --upgrade pip
+        pip install -r IAC_CounterFunction/requirements.txt
+        popd
 
-      - name: Set up environment variables
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-        env:
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+    - name: Python tests
+      run: |
+        cd IAC_CounterFunction/tests
+        ls
+        python test-function_app.py
 
-      - name: Python tests
-        run: |
-          cd IAC_CounterFunction/tests
-          ls
-          python test-function_app.py
+    - name: 'Run Azure Functions Action'
+      uses: Azure/functions-action@v1
+      id: fa
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+        scm-do-build-during-deployment: true
+        enable-oryx-build: true

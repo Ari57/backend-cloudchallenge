@@ -6,6 +6,8 @@ import pymongo
 CONNECTION_STRING = os.environ.get("MONGODB_URI")
 client = pymongo.MongoClient(CONNECTION_STRING)
 
+# TODO test the code itself instead of the live version
+
 database = client["iac-db"]
 counter = database["website-counter"]
 
