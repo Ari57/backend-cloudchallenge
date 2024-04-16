@@ -20,6 +20,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip  
           pip install -r IAC_CounterFunction/requirements.txt
+      - name: Set up environment variables
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
       - name: Python tests
         run: |
           cd IAC_CounterFunction/tests
