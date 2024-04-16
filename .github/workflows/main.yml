@@ -25,6 +25,8 @@ jobs:
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         python -m pip install --upgrade pip
+        pwd
+        ls
         pip install -r IAC_CounterFunction/requirements.txt
         popd
 
